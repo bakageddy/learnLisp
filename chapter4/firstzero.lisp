@@ -1,0 +1,10 @@
+(defun first-zero (list-of-symbols)
+  (cond ((zerop (first list-of-symbols)) 'first)
+        ((zerop (second list-of-symbols)) 'second)
+        ((zerop (third list-of-symbols)) 'third)
+        (t 'none)))
+
+(print (first-zero '(3 0 5)))
+(print (first-zero '(0 0 5)))
+(print (first-zero '(2 2 0)))
+(print (first-zero '(2 2 10)))
