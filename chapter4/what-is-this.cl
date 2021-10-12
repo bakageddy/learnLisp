@@ -1,0 +1,10 @@
+(defun gender-predicate (first-input second-input)
+  (or (and (or (eq first-input 'GIRL)
+               (eq first-input 'BOY))
+           (eq second-input 'CHILD))
+      (and (or (eq first-input 'MAN)
+               (eq first-input 'WOMAN))
+           (eq second-input 'ADULT))))
+
+(print (gender-predicate 'BOY 'ADULT))
+(print (gender-predicate 'BOY 'CHILD))
