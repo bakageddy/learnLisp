@@ -27,7 +27,8 @@
 ; (print (choices *rooms* 'pantry))
 
 (defun look (direction room-name rooms)
-  (choices (choices rooms room-name) direction))
+  (or (choices (choices rooms room-name) direction)
+      nil))
 
 ; (print (look 'north 'pantry *rooms*))
 
@@ -57,18 +58,30 @@
         (on-or-of (if (eq location 'front-stairs)
                     'front-stairs
                     nil)))
-    (or (and up-or-down
-             (list name 'is up-or-down 'in 'the location))
-        (and (eq ))
+    (or (and (eq location 'front-stairs)
+             (list name 'is 'on location))
+        (and (eq location 'downstairs)
+             (list name 'is 'on location))
+        (and up-or-down
+             (list name 'is up-or-down 'in 'the location)))))
 
-(print (where 'library 'robbie))
-(print (where 'kitchen 'robbie))
-(print (where 'front-stairs 'robbie))
-(print (where 'downstairs 'robbie))
+; (print (where 'library 'robbie))
+; (print (where 'kitchen 'robbie))
+; (print (where 'front-stairs 'robbie))
+; (print (where 'downstairs 'robbie))
 
+(defun move (direction current-location)
+  (if (look direction current-location *rooms*)
+    (where direction 'ROBBIE)
+    (list 'ouch! 'robbie 'hit 'a 'wall)))
 
+; (print (move 'south 'pantry))
+; (print (move 'north 'pantry))
 
-
-
-
-
+(defun move-me-there (direction from)
+    (setf *location* (look direction from *rooms*)))
+(move-me-there 'west 'pantry)
+(move-me-there 'west 'dining-room)
+(move-me-there 'north 'downstairs-bedroom)
+(move-me-there 'north 'back-stairs)
+(print *location*)
