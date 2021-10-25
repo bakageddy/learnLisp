@@ -4,6 +4,7 @@
       (2 . diamonds)
       (4 . diamonds)
       (ace . spades)))
+
 (setq *colors*
     '((clubs . black)
       (diamonds . red)
