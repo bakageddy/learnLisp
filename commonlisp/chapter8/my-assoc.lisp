@@ -1,0 +1,10 @@
+(defun my-assoc (table-of-entries entry)
+  (cond ((null table-of-entries) nil)
+        ((eq (caar table-of-entries) entry)
+         (car table-of-entries))
+        (t (my-assoc (cdr table-of-entries)
+                     entry))))
+
+(print (my-assoc '((1 . 10)
+                   (2 . 20))
+                 1))
