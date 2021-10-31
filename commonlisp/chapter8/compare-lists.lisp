@@ -1,0 +1,12 @@
+(defun compare-list (n1 n2)
+  (cond ((and (null n1)
+              (null n2)) 'BOTH-ARE-EQUAL)
+        ((and (null n1)
+              (not (null n2)) 'SECOND-IS-LONGER))
+        ((and (null n2)
+              (not (null n1)) 'FIRST-IS-LONGER))
+        (t (compare-list (cdr n1)
+                         (cdr n2)))))
+
+(print (compare-list '(1 2 3 4 5 6)
+                     '(1 2 3 4 5)))
